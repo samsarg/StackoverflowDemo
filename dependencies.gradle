@@ -1,0 +1,68 @@
+ext {
+
+    versions = [
+            build     : [SDK_MIN    : 21,
+                         SDK_TARGET : 28,
+                         SDK_COMPILE: 28],
+            test      : [ESPRESSO: '3.1.1',
+                         RUNNER  : '1.1.1',
+                         MOCKITO : '2.8.47',
+                         TEST_EXT: "1.1.0",
+                         JUNIT   : '4.12'],
+            ANDROID_X : '1.0.0',
+            ARCH_COMP : '2.0.0',
+            CONSTRAINT: "1.1.2",
+            RXJAVA    : '2.2.4',
+            DAGGER    : '2.22.1',
+            OKHTTP    : '3.12.0',
+            RETROFIT  : '2.5.0',
+            GLIDE     : '4.8.0',
+            LEAKCANARY: '1.6.2',
+            GSON      : "2.8.5",
+    ]
+
+    libraries = [
+            kotlinStd       : "org.jetbrains.kotlin:kotlin-stdlib:${kotlinVersion}",
+            //Retrofit
+            retrofit        : "com.squareup.retrofit2:retrofit:${versions.RETROFIT}",
+            retrofitRx      : "com.squareup.retrofit2:adapter-rxjava2:${versions.RETROFIT}",
+            retrofitJson    : "com.squareup.retrofit2:converter-gson:${versions.RETROFIT}",
+            //RX
+            rxJava          : "io.reactivex.rxjava2:rxjava:${versions.RXJAVA}",
+            rxAndroid       : "io.reactivex.rxjava2:rxandroid:2.0.1",
+
+//            android arch compat
+            viewmodel       : "androidx.lifecycle:lifecycle-viewmodel:${versions.ARCH_COMP}",
+            extensions      : "androidx.lifecycle:lifecycle-extensions:${versions.ARCH_COMP}",
+//            androidX
+            appcompat       : "androidx.appcompat:appcompat:${versions.ANDROID_X}",
+            recycerview     : "androidx.recyclerview:recyclerview:${versions.ANDROID_X}",
+//            design           : "com.google.android.material:material:1.0.0-rc01",
+            constraintLayout: "androidx.constraintlayout:constraintlayout:${versions.CONSTRAINT}",
+//            cartview         : "androidx.cardview:cardview:${versions.ANDROID_X}",
+//            dagger
+            dagger          : "com.google.dagger:dagger-android:${versions.DAGGER}",
+            daggerSupport   : "com.google.dagger:dagger-android-support:${versions.DAGGER}",
+            daggerCompiler  : "com.google.dagger:dagger-compiler:${versions.DAGGER}",
+            daggerProcessor : "com.google.dagger:dagger-android-processor:${versions.DAGGER}",
+            //leakcanary
+            leakcanary      : "com.squareup.leakcanary:leakcanary-android${versions.LEAKCANARY}",
+            leakcanaryNoOp  : "com.squareup.leakcanary:leakcanary-android-no-op${versions.LEAKCANARY}",
+            //glide
+//            glide            : "com.github.bumptech.glide:glide:${versions.GLIDE}",
+//            glideCompiler    : "com.github.bumptech.glide:compiler:${versions.GLIDE}",
+            //network
+            okhttp          : "com.squareup.okhttp3:okhttp:${versions.OKHTTP}",
+            okhttpLogging   : "com.squareup.okhttp3:logging-interceptor:${versions.OKHTTP}",
+            gson            : "com.google.code.gson:gson:${versions.GSON}",
+
+//            unitTesting
+            mockito         : "org.mockito:mockito-core:${versions.test.MOCKITO}",
+            junit           : "junit:junit:${versions.test.JUNIT}",
+//            instrumented Testing
+            espressoCore    : "androidx.test.espresso:espresso-core:${versions.test.ESPRESSO}",
+            testRunner      : "androidx.test:runner:${versions.test.RUNNER}",
+            testExtJunit    : "androidx.test.ext:junit:${versions.test.TEST_EXT}"
+
+    ]
+}
