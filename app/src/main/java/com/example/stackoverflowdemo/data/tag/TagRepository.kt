@@ -1,6 +1,10 @@
 package com.example.stackoverflowdemo.data.tag
 
-class TagRepository {
+import javax.inject.Inject
 
+class TagRepository @Inject constructor(
+    private val remoteDataSource: TagRemoteDataSource
+) {
 
+    fun getPopularTags() = remoteDataSource.getPopularTags()
 }

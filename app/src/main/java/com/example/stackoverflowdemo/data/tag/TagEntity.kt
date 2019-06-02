@@ -1,4 +1,3 @@
 package com.example.stackoverflowdemo.data.tag
 
-class TagEntity {
-}
+data class TagEntity(val name: String, val count: Int)
