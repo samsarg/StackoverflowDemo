@@ -1,6 +1,6 @@
 package com.example.stackoverflowdemo.di
 
-import com.example.stackoverflowdemo.App
+import com.example.stackoverflowdemo.presentation.App
 import dagger.Component
 import dagger.android.AndroidInjector
 
