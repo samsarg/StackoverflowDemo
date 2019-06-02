@@ -1,14 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".presentation.question.QuestionFragment">
+>
 
-    <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
+    <data>
+        <variable
+                name="viewmodel"
+                type="com.example.stackoverflowdemo.presentation.question.QuestionViewModel"/>
+    </data>
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipe"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            app:onRefreshListener="@{viewmodel::onRefresh}"
+            app:refreshing="@{viewmodel.isLoading}"
+    >
 
-</FrameLayout>
+        <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:items="@{viewmodel.questions}"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        />
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+</layout>

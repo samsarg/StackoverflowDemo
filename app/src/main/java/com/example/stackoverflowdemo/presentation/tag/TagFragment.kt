@@ -10,7 +10,6 @@ import com.example.stackoverflowdemo.R
 import com.example.stackoverflowdemo.databinding.TagFragmentBinding
 import com.example.stackoverflowdemo.presentation.common.BaseFragment
 import com.example.stackoverflowdemo.presentation.question.QuestionFragment
-import javax.inject.Inject
 
 class TagFragment : BaseFragment() {
 
@@ -18,38 +17,38 @@ class TagFragment : BaseFragment() {
         fun newInstance() = TagFragment()
     }
 
-    @Inject
     lateinit var viewModel: TagViewModel
 
     lateinit var adapter: TagRecyclerAdapter
+
+    lateinit var binding: TagFragmentBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = TagFragmentBinding.inflate(inflater, container, false)
-        adapter = TagRecyclerAdapter(viewModel)
-        binding.recyclerView.adapter = adapter
-        binding.lifecycleOwner = this
+        binding = TagFragmentBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(TagViewModel::class.java)
+        adapter = TagRecyclerAdapter(viewModel)
+        binding.recyclerView.adapter = adapter
+        binding.setLifecycleOwner(this.viewLifecycleOwner)
+        binding.viewmodel = viewModel
         viewModel.getTags()
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+
+    override fun onStart() {
+        super.onStart()
         viewModel.tagNavigation.observe(this, Observer {
             fragmentManager?.beginTransaction()
                 ?.replace(R.id.fragmentContainer, QuestionFragment.newInstance(it))
                 ?.addToBackStack(null)
                 ?.commit()
-        })
-        viewModel.tags.observe(this, Observer {
-            adapter.setItems(it)
         })
     }
 

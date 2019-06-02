@@ -39,6 +39,7 @@ class QuestionViewModel @Inject constructor(
         disposables = getQuestions(1)
             .subscribe({
                 lastLoadedPageIndex = 1
+                questions.value = it
             }, {
                 errorMessage.value = "Error Occurred"
             })
@@ -54,7 +55,10 @@ class QuestionViewModel @Inject constructor(
             .subscribe(
                 {
                     lastLoadedPageIndex++
-                    questions.value = it
+                    val combined = ArrayList<QuestionEntity>()
+                    combined.addAll(questions.value!!)
+                    combined.addAll(it)
+                    questions.value = combined
                 },
                 {
                     errorMessage.value = "Error Occurred"
@@ -74,6 +78,10 @@ class QuestionViewModel @Inject constructor(
             .doFinally {
                 isLoading.value = false
             }
+
+    fun onRefresh() {
+        getInitialQuestions(true)
+    }
 
     override fun onCleared() {
         disposables?.dispose()

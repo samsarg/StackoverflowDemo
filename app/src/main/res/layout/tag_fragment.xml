@@ -2,7 +2,7 @@
 
 <layout xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools">
+>
 
     <data>
 
@@ -11,22 +11,21 @@
                 type="com.example.stackoverflowdemo.presentation.tag.TagViewModel"/>
     </data>
 
-    <FrameLayout
-            android:layout_width="match_parent" android:layout_height="match_parent"
-            tools:context=".presentation.tag.TagFragment">
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipe"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
 
-        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            app:onRefreshListener="@{viewmodel::onRefresh}"
+            app:refreshing="@{viewmodel.isLoading}"
+    >
+
+        <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:refreshing="@{viewmodel.isLoading}"
-        >
-
-            <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerView"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            />
-        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-    </FrameLayout>
+                app:items="@{viewmodel.tags}"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        />
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </layout>

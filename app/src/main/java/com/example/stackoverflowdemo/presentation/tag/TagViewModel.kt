@@ -8,6 +8,7 @@ import com.example.stackoverflowdemo.presentation.common.SingleLiveEvent
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
+import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 class TagViewModel @Inject constructor(
@@ -49,6 +50,10 @@ class TagViewModel @Inject constructor(
                         errorMessage.value = it.toString()
                     }
                 )
+    }
+
+    fun onRefresh() {
+        getTags()
     }
 
     override fun onTagClicked(tag: TagEntity) {

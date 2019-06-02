@@ -2,9 +2,7 @@ package com.example.stackoverflowdemo.presentation.tag
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.example.stackoverflowdemo.R
 import com.example.stackoverflowdemo.data.tag.TagEntity
 import com.example.stackoverflowdemo.databinding.TagItemBinding
 
@@ -12,8 +10,8 @@ class TagRecyclerAdapter(private val tagClickListener: TagClickListener) : Recyc
     private var items = emptyList<TagEntity>()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TagViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
-        val binding: TagItemBinding =
-            DataBindingUtil.inflate(layoutInflater, R.layout.tag_item, parent, false)
+        val binding =
+            TagItemBinding.inflate(layoutInflater, parent, false)
         return TagViewHolder(binding, tagClickListener)
     }
 
