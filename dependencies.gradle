@@ -6,7 +6,7 @@ ext {
                          SDK_COMPILE: 28],
             test      : [ESPRESSO: '3.1.1',
                          RUNNER  : '1.1.1',
-                         MOCKITO : '2.8.47',
+                         MOCKITO : '2.8.9',
                          TEST_EXT: "1.1.0",
                          JUNIT   : '4.12'],
             ANDROID_X : '1.0.0',
@@ -62,7 +62,8 @@ ext {
 //            instrumented Testing
             espressoCore    : "androidx.test.espresso:espresso-core:${versions.test.ESPRESSO}",
             testRunner      : "androidx.test:runner:${versions.test.RUNNER}",
-            testExtJunit    : "androidx.test.ext:junit:${versions.test.TEST_EXT}"
-
+            testExtJunit    : "androidx.test.ext:junit:${versions.test.TEST_EXT}",
+            mockitoInline   : 'org.mockito:mockito-inline:2.13.0',
+            coreTest        : "android.arch.core:core-testing:1.1.1"
     ]
 }
