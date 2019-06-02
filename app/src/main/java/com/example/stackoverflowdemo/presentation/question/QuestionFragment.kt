@@ -33,13 +33,17 @@ class QuestionFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel.setTag(getTagArgument())
         viewModel.getInitialQuestions(false)
+    }
+
+    private fun getTagArgument(): String {
+        return arguments!!.getString(TAG_ARG_KEY)!!
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(QuestionViewModel::class.java)
-        // TODO: Use the ViewModel
     }
 
 

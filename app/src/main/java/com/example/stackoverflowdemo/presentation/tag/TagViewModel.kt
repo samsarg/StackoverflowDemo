@@ -12,9 +12,9 @@ import javax.inject.Inject
 
 class TagViewModel @Inject constructor(
     private val tagRepository: TagRepository
-) : ViewModel() {
+) : ViewModel(), TagClickListener {
 
-    val tags = MutableLiveData<List<TagEntity>>()
+    val tags = MutableLiveData<List<TagEntity>>().apply { emptyList<TagEntity>() }
     val isLoading = MutableLiveData<Boolean>()
     val errorMessage = SingleLiveEvent<String>()
     //TODO create common class vor navigation entity
@@ -51,7 +51,7 @@ class TagViewModel @Inject constructor(
                 )
     }
 
-    fun onTagClicked(tag: TagEntity) {
+    override fun onTagClicked(tag: TagEntity) {
         tagNavigation.value = tag.name
     }
 

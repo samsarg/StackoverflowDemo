@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+                name="question"
+                type="com.example.stackoverflowdemo.data.question.QuestionEntity"/>
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:orientation="vertical"
+            android:padding="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        <TextView
+                android:id="@+id/count"
+                android:text="@{question.score}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="@+id/name"
+                app:layout_constraintTop_toTopOf="@+id/name"
+                tools:text="24334"/>
+        <TextView
+                android:id="@+id/name"
+                android:text="@{question.title}"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/count"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:text="Some Quearion \ntitle"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

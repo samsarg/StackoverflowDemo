@@ -11,7 +11,7 @@ ext {
                          JUNIT   : '4.12'],
             ANDROID_X : '1.0.0',
             ARCH_COMP : '2.0.0',
-            CONSTRAINT: "1.1.2",
+            CONSTRAINT: "2.0.0-alpha3",
             RXJAVA    : '2.2.4',
             DAGGER    : '2.22.1',
             OKHTTP    : '3.12.0',

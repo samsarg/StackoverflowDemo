@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View.OnClickListener"/>
+
+        <variable
+                name="tag"
+                type="com.example.stackoverflowdemo.data.tag.TagEntity"/>
+
+        <variable
+                name="listener"
+                type="com.example.stackoverflowdemo.presentation.tag.TagClickListener"/>
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:orientation="vertical"
+            android:onClick="@{() -> listener.onTagClicked(tag)}"
+            android:padding="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        <TextView
+                android:id="@+id/count"
+                android:text="@{tag.count}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="@+id/name"
+                app:layout_constraintTop_toTopOf="@+id/name"
+                tools:text="24334"/>
+        <TextView
+                android:id="@+id/name"
+                android:text="@{tag.name}"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/count"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:text="Some Quearion \ntitle"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

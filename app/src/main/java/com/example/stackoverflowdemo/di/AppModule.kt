@@ -8,6 +8,7 @@ import dagger.android.AndroidInjectionModule
     includes = [
         DataLayerModule::class,
         ViewModelModule::class,
+        AppSubcomponentBindings::class,
         AndroidInjectionModule::class
     ]
 )
