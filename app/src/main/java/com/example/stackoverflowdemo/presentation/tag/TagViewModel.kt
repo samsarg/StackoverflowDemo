@@ -5,10 +5,10 @@ import androidx.lifecycle.ViewModel
 import com.example.stackoverflowdemo.data.tag.TagEntity
 import com.example.stackoverflowdemo.data.tag.TagRepository
 import com.example.stackoverflowdemo.presentation.common.SingleLiveEvent
+import com.example.stackoverflowdemo.presentation.utls.EspressoIdlingResource
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
-import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 class TagViewModel @Inject constructor(
@@ -38,9 +38,11 @@ class TagViewModel @Inject constructor(
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe {
                     isLoading.value = true
+                    EspressoIdlingResource.increment()
                 }
                 .doFinally {
                     isLoading.value = false
+                    EspressoIdlingResource.decrement()
                 }
                 .subscribe(
                     {

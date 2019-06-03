@@ -14,7 +14,7 @@ android {
         targetSdkVersion versions.build.SDK_TARGET
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
@@ -60,5 +60,7 @@ dependencies {
     androidTestImplementation libraries.espressoCore
     androidTestImplementation libraries.testRunner
     androidTestImplementation libraries.testExtJunit
+    androidTestImplementation 'androidx.test:rules:1.2.0'
+
 //    androidTestImplementation 'androidx.test.ext:junit:1.1.0'
 }
